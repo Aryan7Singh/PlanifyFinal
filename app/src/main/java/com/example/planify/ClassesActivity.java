@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.planify.databinding.ActivityClassesBinding;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -22,6 +24,7 @@ import java.util.List;
 public class ClassesActivity extends AppCompatActivity {
     ActivityClassesBinding binding;
     private CourseViewModel courseViewModel;
+//    private int action = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,26 @@ public class ClassesActivity extends AppCompatActivity {
 
 //        taskViewModel = new ViewModelProvider(this, (ViewModelProvider.AndroidViewModelFactory)
 //                ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(TaskViewModel.class);
+        binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                action = 1;
+                Log.d("CONFIRMATION", "confirm");
+                Intent intent = new Intent(ClassesActivity.this, ConfirmationActivity.class);
+                intent.putExtra("act", "confirm");
+                startActivityForResult(intent, (Globals.actionCourse == 0) ? 3 : 2);
+            }
+        });
+        binding.btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                action = 0;
+                Log.d("CONFIRMATION", "cancel");
+                Intent intent = new Intent(ClassesActivity.this, ConfirmationActivity.class);
+                intent.putExtra("act", "cancel");
+                startActivityForResult(intent, (Globals.actionCourse == 0) ? 3 : 2);
+            }
+        });
         binding.floatingSHOW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +65,7 @@ public class ClassesActivity extends AppCompatActivity {
             }
         });
 
+        binding.ConfirmationLayout.setVisibility(View.GONE);
         binding.RVClasses.setLayoutManager(new LinearLayoutManager(this));
         binding.RVClasses.setHasFixedSize(true);
         RVCourseAdapter courseAdapter = new RVCourseAdapter();
@@ -129,19 +153,45 @@ public class ClassesActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                Globals.relCourse = courseAdapter.getCourse(viewHolder.getAdapterPosition());
+                binding.ConfirmationLayout.setVisibility(View.VISIBLE);
                 if (direction==ItemTouchHelper.RIGHT) {
-                    courseViewModel.delete(courseAdapter.getCourse(viewHolder.getAdapterPosition()));
-                    Toast.makeText(ClassesActivity.this, "Course deleted!", Toast.LENGTH_SHORT).show();
+                    binding.dialogMessage.setText("Are you sure you want to proceed with deletion?");
+                    Globals.actionCourse = 0;
+
+//                    String action;
+
+//                    while(true) {
+//                        action = getIntent().getStringExtra("act");
+//                        if (action == -1) {
+////                            continue;
+//                        }
+//                        if (action == 1) {
+//                            action = -1;
+//                            binding.ConfirmationLayout.setVisibility(View.GONE);
+//                            courseViewModel.delete(courseAdapter.getCourse(viewHolder.getAdapterPosition()));
+//                            Toast.makeText(ClassesActivity.this, "Course deleted!", Toast.LENGTH_SHORT).show();
+////                            break;
+//                        } else if (action == 0) {
+//                            action = -1;
+//                            binding.ConfirmationLayout.setVisibility(View.GONE);
+////                            break;
+//                        }
+//                    }
                 } else {
-                    Intent intent = new Intent(ClassesActivity.this, CourseDataInsertActivity.class);
-                    intent.putExtra("type", "update");
-                    intent.putExtra("title", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getTitle());
-                    intent.putExtra("time", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getTime());
-                    intent.putExtra("instructor", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getInstructor());
-                    intent.putExtra("day", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getDayRepeat());
-                    intent.putExtra("location", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getLocationRmNum());
-                    intent.putExtra("id", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getId());
-                    startActivityForResult(intent, 2);
+                    Globals.actionCourse = 1;
+                    binding.dialogMessage.setText("Are you sure you want to proceed with updating?");
+//                    intent.putExtra("ultimateIntent", "update");
+//                    startActivityForResult(intent, 2);
+//                    Intent intent = new Intent(ClassesActivity.this, CourseDataInsertActivity.class);
+//                    intent.putExtra("type", "update");
+//                    intent.putExtra("title", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getTitle());
+//                    intent.putExtra("time", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getTime());
+//                    intent.putExtra("instructor", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getInstructor());
+//                    intent.putExtra("day", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getDayRepeat());
+//                    intent.putExtra("location", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getLocationRmNum());
+//                    intent.putExtra("id", courseAdapter.getCourse(viewHolder.getAdapterPosition()).getId());
+//                    startActivityForResult(intent, 2);
                 }
             }
         }).attachToRecyclerView(binding.RVClasses);
@@ -165,7 +215,7 @@ public class ClassesActivity extends AppCompatActivity {
                 return true;
             }
             else if(item.getItemId() == R.id.bottom_exams){
-                startActivity(new Intent(getApplicationContext(), ClassesActivity.class));
+                startActivity(new Intent(getApplicationContext(), ExamActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
@@ -207,16 +257,45 @@ public class ClassesActivity extends AppCompatActivity {
             Toast.makeText(this, "Course added!", Toast.LENGTH_SHORT).show();
         }
         else if (requestCode == 2) {
-            String title = data.getStringExtra("title");
-            String time = data.getStringExtra("time");
-            String instructor = data.getStringExtra("instructor");
-            String day = data.getStringExtra("day");
-            String location = data.getStringExtra("location");
-            Course course = new Course(title, time, instructor, day, location);
-            course.setId(data.getIntExtra("id", 0));
-            courseViewModel.update(course);
-            Toast.makeText(this, "Course updated!", Toast.LENGTH_SHORT).show();
+//            Log.d("AUTHORIZE ACTION", data.getStringExtra("continue"));
+            if (data.getStringExtra("continue").equals("t")) {
+//                Log.d("AUTHORIZE ACTION", data.getStringExtra("title")); // <-- WORKS
+                String title = data.getStringExtra("title");
+                String time = data.getStringExtra("time");
+                String instructor = data.getStringExtra("instructor");
+                String day = data.getStringExtra("day");
+                String location = data.getStringExtra("location");
+                Course course = new Course(title, time, instructor, day, location);
+                course.setId(data.getIntExtra("id", 0));
+                courseViewModel.update(course);
+//                List<Course> lc = courseViewModel.getAllCourses().getValue();
+//                if (lc == null) {
+//                    Log.d("COURSE UPDATE", "NULL??");
+//                }
+//                for (Course c : lc) {
+//                    Log.d("COURSE UPDATE", c.toString());
+//                }
+//                courseViewModel.getAllCourses().observe(ClassesActivity.this, new Observer<List<Course>>() {
+//                    @Override
+//                    public void onChanged(List<Course> courses) {
+//                        if (courses != null) {
+//                            // Now, 'courses' should have the updated list
+//                            courseAdapter.submitList(courses);
+//                        }
+//                    }
+//                });
+                Toast.makeText(this, "Course updated!", Toast.LENGTH_SHORT).show();
+            }
+            binding.ConfirmationLayout.setVisibility(View.GONE);
         }
+        else if (requestCode == 3) {
+            if (data.getStringExtra("continue").equals("t")) {
+                courseViewModel.delete(Globals.relCourse);
+                Toast.makeText(this, "Course deleted!", Toast.LENGTH_SHORT).show();
+            }
+            binding.ConfirmationLayout.setVisibility(View.GONE);
+        }
+//        Toast.makeText(ClassesActivity.this, "Course deleted!", Toast.LENGTH_SHORT).show();
     }
 }
 

@@ -24,7 +24,6 @@ ActivityDataInsertBinding binding;
             binding.desc.setText(getIntent().getStringExtra("desc"));
             int id = getIntent().getIntExtra("id", 0);
             binding.add.setText("Update Task");
-            //Event handler
             binding.add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

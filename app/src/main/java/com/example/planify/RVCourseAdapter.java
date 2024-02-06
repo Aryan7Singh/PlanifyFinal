@@ -41,7 +41,7 @@ public class RVCourseAdapter extends ListAdapter<Course, RVCourseAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder1, int position) {
         Course course = getItem(position);
-        holder1.binding.courseNameRv.setText(course.getTitle());
+        holder1.binding.nameRv.setText(course.getTitle());
         holder1.binding.timeRV.setText(course.getTime());
         holder1.binding.instructorRV.setText(course.getInstructor());
         holder1.binding.dayRV.setText(course.getDayRepeat());

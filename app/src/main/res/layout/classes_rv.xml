@@ -8,7 +8,7 @@
     android:background="#B59CE3">
 
     <TextView
-        android:id="@+id/courseNameRv"
+        android:id="@+id/nameRv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -28,8 +28,8 @@
         android:text="random"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/courseNameRv"
-        app:layout_constraintTop_toBottomOf="@+id/courseNameRv" />
+        app:layout_constraintStart_toStartOf="@+id/nameRv"
+        app:layout_constraintTop_toBottomOf="@+id/nameRv" />
 
     <TextView
         android:id="@+id/instructorRV"
@@ -52,7 +52,7 @@
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/locationRV"
+        app:layout_constraintStart_toEndOf="@+id/timeRV"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -60,11 +60,11 @@
         android:id="@+id/locationRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="15dp"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dayRV"
+        app:layout_constraintEnd_toStartOf="@+id/instructorRV"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.272" />
 </androidx.constraintlayout.widget.ConstraintLayout>

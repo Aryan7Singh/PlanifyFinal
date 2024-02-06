@@ -70,11 +70,8 @@
         app:layout_constraintVertical_bias="0.975" />
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".ClassesActivity">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -93,6 +90,69 @@
             app:itemRippleColor="@android:color/transparent"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_menu" />
+
+        <RelativeLayout
+            android:id="@+id/ConfirmationLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="300dp"
+            android:background="#CAD7F8"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/dialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Confirmation"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dialogMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dialogTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Are you sure you want to proceed?"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dialogMessage"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/purple_500"
+                android:text="Cancel" />
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dialogMessage"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="74dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/purple_500"
+                android:text="Confirm" />
+
+        </RelativeLayout>
     </RelativeLayout>
+        <!-- confirmation_dialog.xml -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

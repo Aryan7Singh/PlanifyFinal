@@ -68,7 +68,7 @@ public class Course {
     public void setLocationRmNum(String locationRmNum) {
         this.locationRmNum = locationRmNum;
     }
-//    public String toString() {
-//        return "{" + title + "," + time + "," + instructor + "}";
-//    }
+    public String toString() {
+        return "{" + title + "," + time + "," + instructor + "," + dayRepeat + "," + locationRmNum + "}";
+    }
 }

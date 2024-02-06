@@ -90,8 +90,8 @@ private TaskViewModel taskViewModel;
                 finish();
                 return true;
             }
-            else if(item.getItemId() == R.id.bottom_assignments){
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            else if(item.getItemId() == R.id.bottom_exams){
+                startActivity(new Intent(getApplicationContext(), ExamActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;

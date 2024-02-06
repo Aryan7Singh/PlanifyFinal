@@ -6,80 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".CourseDataInsertActivity">
 
-    <EditText
-        android:id="@+id/CourseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:hint="Course Title"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/CourseTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Course Time"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/CourseInstructor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CourseTitle"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/CourseInstructor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Course Instructor"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="260dp" />
-
-    <EditText
-        android:id="@+id/CourseDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:ems="10"
-        android:hint="Course Day"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CourseInstructor" />
-
-    <EditText
-        android:id="@+id/CourseLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Course Location"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CourseDay" />
-
     <Button
         android:id="@+id/addCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Course"
+        android:layout_marginTop="100dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CourseLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/Instructor"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <EditText
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Course Name"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Time (Date Optional)"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title" />
+
+    <EditText
+        android:id="@+id/Instructor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Instructor"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Time" />
+
+    <EditText
+        android:id="@+id/Day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Day (Recurring)"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/Location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Instructor"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <EditText
+        android:id="@+id/Location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Location and Room"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/addCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Instructor"
+        app:layout_constraintVertical_bias="0.651" />
 </androidx.constraintlayout.widget.ConstraintLayout>

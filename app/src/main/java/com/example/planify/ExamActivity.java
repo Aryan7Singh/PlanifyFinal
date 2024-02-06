@@ -65,7 +65,7 @@ public class ExamActivity extends AppCompatActivity {
                     examViewModel.delete(adapter.getExam(viewHolder.getAdapterPosition()));
                     Toast.makeText(ExamActivity.this, "Exam deleted!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(ExamActivity.this, DataInsertActivity.class);
+                    Intent intent = new Intent(ExamActivity.this, ExamDataInsertActivity.class);
                     intent.putExtra("type", "update");
                     intent.putExtra("ExamName", adapter.getExam(viewHolder.getAdapterPosition()).getName());
                     intent.putExtra("Date", adapter.getExam(viewHolder.getAdapterPosition()).getDate());
@@ -96,7 +96,7 @@ public class ExamActivity extends AppCompatActivity {
                 finish();
                 return true;
             }
-            else if(item.getItemId() == R.id.bottom_assignments){
+            else if(item.getItemId() == R.id.bottom_tasks){
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
@@ -129,21 +129,21 @@ public class ExamActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            String name = data.getStringExtra("name");
-            String date = data.getStringExtra("date");
-            String time = data.getStringExtra("time");
-            String location = data.getStringExtra("location");
-            String details = data.getStringExtra("details");
+            String name = data.getStringExtra("ExamName");
+            String date = data.getStringExtra("Date");
+            String time = data.getStringExtra("Time");
+            String location = data.getStringExtra("Location");
+            String details = data.getStringExtra("ExtraDetails");
             Exam exam = new Exam(name, date, time, location, details);
             examViewModel.insert(exam);
             Toast.makeText(this, "Exam added!", Toast.LENGTH_SHORT).show();
         }
         else if (requestCode == 2) {
-            String name = data.getStringExtra("name");
-            String date = data.getStringExtra("date");
-            String time = data.getStringExtra("time");
-            String location = data.getStringExtra("location");
-            String details = data.getStringExtra("details");
+            String name = data.getStringExtra("ExamName");
+            String date = data.getStringExtra("Date");
+            String time = data.getStringExtra("Time");
+            String location = data.getStringExtra("Location");
+            String details = data.getStringExtra("ExtraDetails");
             Exam exam = new Exam(name, date, time, location, details);
             exam.setId(data.getIntExtra("id", 0));
             examViewModel.update(exam);
