@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_tasks"
+        android:icon="@android:drawable/checkbox_on_background"
+        android:title="Tasks" />
+    <item
+        android:id="@+id/bottom_courses"
+        android:icon="?attr/actionModeCopyDrawable"
+        android:title="Courses" />
+    <item
+        android:id="@+id/bottom_assignments"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Assignments" />
+
+    <item
+        android:id="@+id/bottom_exams"
+        android:icon="?attr/actionModePasteDrawable"
+        android:title="Exams" />
+</menu>
