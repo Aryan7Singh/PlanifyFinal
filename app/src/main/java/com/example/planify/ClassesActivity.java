@@ -209,7 +209,7 @@ public class ClassesActivity extends AppCompatActivity {
                 return true;
             }
             else if(item.getItemId() == R.id.bottom_assignments){
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), AssignmentActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;

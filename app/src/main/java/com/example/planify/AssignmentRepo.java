@@ -24,7 +24,7 @@ public class AssignmentRepo {
         if (Globals.assignmentViewType == 0) {
             assignmentList = assignmentDao.getAllData();
         } else if (Globals.assignmentViewType == 1) {
-            assignmentList = assignmentDao.getAssignNameData();
+            assignmentList = assignmentDao.getClassAssocData();
         } else {
             assignmentList = assignmentDao.getDueDateData();
         }

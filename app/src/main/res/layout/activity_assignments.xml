@@ -40,34 +40,35 @@
         android:layout_height="wrap_content"
         android:text="Default Order"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sortByAssignName"
+        app:layout_constraintEnd_toStartOf="@+id/sortByClassAssoc"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.80" />
 
     <Button
-        android:id="@+id/sortByAssignName"
+        android:id="@+id/sortByClassAssoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:text="Sort By Title"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="300dp"
+        android:text="Sort/Group By Course"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addAssignment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.80" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/sortByDueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort By Time"
-        app:layout_constraintBottom_toTopOf="@+id/sortByAssignName"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="135dp"
+        android:text="Sort By Due Date"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/RVAssignments"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintTop_toBottomOf="@+id/sortByClassAssoc" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -31,18 +31,13 @@ public class ConfirmationActivityAssign extends AppCompatActivity {
             } else {
                 Intent intent1 = new Intent(ConfirmationActivityAssign.this, AssignmentDataInsertActivity.class);
                 intent1.putExtra("type", "update");
-                intent1.putExtra("title", Globals.relAssignment.getAssignName());
-                intent1.putExtra("time", Globals.relAssignment.getTime());
-                intent1.putExtra("instructor", Globals.relAssignment.getInstructor());
-                intent1.putExtra("day", Globals.relAssignment.getDayRepeat());
-                intent1.putExtra("location", Globals.relAssignment.getLocationRmNum());
+                intent1.putExtra("assignName", Globals.relAssignment.getAssignName());
+                intent1.putExtra("dueDate", Globals.relAssignment.getDueDate());
+                intent1.putExtra("classAssoc", Globals.relAssignment.getClassAssoc());
+                intent1.putExtra("dayRepeat", Globals.relAssignment.getDayRepeat());
+                intent1.putExtra("locRm", Globals.relAssignment.getLocRm());
                 intent1.putExtra("id", Globals.relAssignment.getId());
                 startActivityForResult(intent1, 5);
-//                startActivity(intent1);
-//                getIntent().getStringExtra("title")
-//                startActivity(intent1);
-//                finish();
-//                    startActivityForResult(intent, 2);
             }
         } else {
             Intent intent = new Intent();
@@ -54,15 +49,12 @@ public class ConfirmationActivityAssign extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == 5) {
-//        Log.d("POST UPDATE", "HELLLLOOOOOOO");
         Intent intent = new Intent();
-//        Log.d("POST UPDATE", data.getStringExtra("title"));
-        intent.putExtra("title", data.getStringExtra("title"));
-        intent.putExtra("time", data.getStringExtra("time"));
-        intent.putExtra("instructor", data.getStringExtra("instructor"));
-        intent.putExtra("day", data.getStringExtra("day"));
-        intent.putExtra("location", data.getStringExtra("location"));
+        intent.putExtra("assignName", data.getStringExtra("assignName"));
+        intent.putExtra("dueDate", data.getStringExtra("dueDate"));
+        intent.putExtra("classAssoc", data.getStringExtra("classAssoc"));
+        intent.putExtra("dayRepeat", data.getStringExtra("dayRepeat"));
+        intent.putExtra("locRm", data.getStringExtra("locRm"));
         intent.putExtra("id", data.getIntExtra("id", 0));
         intent.putExtra("continue", "t");
         setResult(RESULT_OK, intent);

@@ -78,7 +78,7 @@ public class AssignmentActivity extends AppCompatActivity {
             }
         }); 
 
-        binding.sortByTitle.setOnClickListener(new View.OnClickListener() {
+        binding.sortByClassAssoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Globals.assignmentViewType = 1;
@@ -93,7 +93,7 @@ public class AssignmentActivity extends AppCompatActivity {
             }
         });
 
-        binding.defaultOrder.setOnClickListener(new View.OnClickListener() {
+        binding.defaultOrderAssign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Globals.assignmentViewType = 0;
@@ -108,7 +108,7 @@ public class AssignmentActivity extends AppCompatActivity {
             }
         });
 
-        binding.sortByTime.setOnClickListener(new View.OnClickListener() {
+        binding.sortByDueDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Globals.assignmentViewType = 2;
@@ -143,9 +143,9 @@ public class AssignmentActivity extends AppCompatActivity {
         }).attachToRecyclerView(binding.RVAssignments);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId(R.id.bottom_courses);
+        bottomNavigationView.setSelectedItemId(R.id.bottom_assignments);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            if(item.getItemId() == R.id.bottom_courses){
+            if(item.getItemId() == R.id.bottom_assignments){
                 return true;
             }
             else if(item.getItemId() == R.id.bottom_tasks){
@@ -154,8 +154,8 @@ public class AssignmentActivity extends AppCompatActivity {
                 finish();
                 return true;
             }
-            else if(item.getItemId() == R.id.bottom_assignments){
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            else if(item.getItemId() == R.id.bottom_courses){
+                startActivity(new Intent(getApplicationContext(), ClassesActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;
@@ -174,23 +174,23 @@ public class AssignmentActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            String title = data.getStringExtra("title");
-            String time = data.getStringExtra("time");
-            String instructor = data.getStringExtra("instructor");
-            String day = data.getStringExtra("day");
-            String location = data.getStringExtra("location");
-            Assignment assignment = new Assignment(title, time, instructor, day, location);
+            String assignName = data.getStringExtra("assignName");
+            String dueDate = data.getStringExtra("dueDate");
+            String classAssoc = data.getStringExtra("classAssoc");
+            String dayRepeat = data.getStringExtra("dayRepeat");
+            String locRm = data.getStringExtra("locRm");
+            Assignment assignment = new Assignment(assignName, dueDate, classAssoc, dayRepeat, locRm);
             assignmentViewModel.insert(assignment);
             Toast.makeText(this, "Assignment added!", Toast.LENGTH_SHORT).show();
         }
         else if (requestCode == 2) {
             if (data.getStringExtra("continue").equals("t")) {
-                String title = data.getStringExtra("title");
-                String time = data.getStringExtra("time");
-                String instructor = data.getStringExtra("instructor");
-                String day = data.getStringExtra("day");
-                String location = data.getStringExtra("location");
-                Assignment assignment = new Assignment(title, time, instructor, day, location);
+                String assignName = data.getStringExtra("assignName");
+                String dueDate = data.getStringExtra("dueDate");
+                String classAssoc = data.getStringExtra("classAssoc");
+                String dayRepeat = data.getStringExtra("dayRepeat");
+                String locRm = data.getStringExtra("locRm");
+                Assignment assignment = new Assignment(assignName, dueDate, classAssoc, dayRepeat, locRm);
                 assignment.setId(data.getIntExtra("id", 0));
                 assignmentViewModel.update(assignment);
                 Toast.makeText(this, "Assignment updated!", Toast.LENGTH_SHORT).show();

@@ -45,11 +45,11 @@ public class RVAssignmentAdapter extends ListAdapter<Assignment, RVAssignmentAda
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder1, int position) {
         Assignment assignment = getItem(position);
-        holder1.binding.nameRv.setText(assignment.getTitle());
-        holder1.binding.timeRV.setText(assignment.getTime());
-        holder1.binding.instructorRV.setText(assignment.getInstructor());
-        holder1.binding.dayRV.setText(assignment.getDayRepeat());
-        holder1.binding.locationRV.setText(assignment.getLocationRmNum());
+        holder1.binding.assignNameRv.setText(assignment.getAssignName());
+        holder1.binding.dueDateRv.setText(assignment.getDueDate());
+        holder1.binding.classAssocRv.setText(assignment.getClassAssoc());
+        holder1.binding.dayRepeatRv.setText(assignment.getDayRepeat());
+        holder1.binding.locationRV.setText(assignment.getLocRm());
     }
     public Assignment getAssignment(int position) {
         return getItem(position);

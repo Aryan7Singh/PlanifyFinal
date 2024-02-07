@@ -17,15 +17,13 @@ public interface AssignmentDao {
 
     @Delete
     public void delete(Assignment assignment);
-
-//    @Query("SELECT * FROM assignment_list ORDER BY title")
-
+    
     @Query("SELECT * FROM assignment_list")
-    public LiveData<List<Course>> getAllData();
+    public LiveData<List<Assignment>> getAllData();
 
-    @Query("SELECT * FROM assignment_list ORDER BY title")
-    public LiveData<List<Course>> getAssignNameData();
+    @Query("SELECT * FROM assignment_list ORDER BY classAssoc")
+    public LiveData<List<Assignment>> getClassAssocData();
 
-    @Query("SELECT * FROM assignment_list ORDER BY time")
-    public LiveData<List<Course>> getDueDateData();
+    @Query("SELECT * FROM assignment_list ORDER BY dueDate")
+    public LiveData<List<Assignment>> getDueDateData();
 }

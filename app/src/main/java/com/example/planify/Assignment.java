@@ -21,36 +21,36 @@ public class Assignment {
     public int getId() {
         return id;
     }
-    public Assignment(String title, String time, String instructor, String dayRepeat, String locationRmNum) {
-        this.assignName = title;
-        this.dueDate = time;
-        this.classAssoc = instructor;
+    public Assignment(String assignName, String dueDate, String classAssoc, String dayRepeat, String locRm) {
+        this.assignName = assignName;
+        this.dueDate = dueDate;
+        this.classAssoc = classAssoc;
         this.dayRepeat = dayRepeat;
-        this.locRm = locationRmNum;
+        this.locRm = locRm;
     }
 
     public String getAssignName() {
         return assignName;
     }
 
-    public void setAssignName(String title) {
-        this.assignName = title;
+    public void setAssignName(String assignName) {
+        this.assignName = assignName;
     }
 
     public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(String time) {
-        this.dueDate = time;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public String getClassAssoc() {
         return classAssoc;
     }
 
-    public void setClassAssoc(String instructor) {
-        this.classAssoc = instructor;
+    public void setClassAssoc(String classAssoc) {
+        this.classAssoc = classAssoc;
     }
 
     public String getDayRepeat() {
@@ -65,8 +65,8 @@ public class Assignment {
         return locRm;
     }
 
-    public void setLocRm(String locationRmNum) {
-        this.locRm = locationRmNum;
+    public void setLocRm(String locRm) {
+        this.locRm = locRm;
     }
     public String toString() {
         return "{" + assignName + "," + dueDate + "," + classAssoc + "," + dayRepeat + "," + locRm + "}";
